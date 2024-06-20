@@ -10,5 +10,5 @@ RUN apt-get install -y \
     libgtk-3-dev liblzma-dev \
     libstdc++-12-dev
 RUN git clone -b master https://github.com/flutter/flutter.git ../sdk
-RUN echo 'export PATH="/sdk/bin/:$PATH"' >> ~/.bashrc
 RUN /sdk/bin/flutter doctor
+RUN echo 'export PATH="/sdk/bin/:$PATH"' >> ~/.bashrc
