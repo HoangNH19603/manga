@@ -1,14 +1,6 @@
-FROM ubuntu
+FROM hoangnh1906/flutter-ubuntu:v1.0.1
 
-WORKDIR /app
-
-RUN apt-get update
-RUN apt-get install -y curl git unzip xz-utils zip libglu1-mesa nano
-RUN apt-get install -y \
-    clang cmake git \
-    ninja-build pkg-config \
-    libgtk-3-dev liblzma-dev \
-    libstdc++-12-dev
-RUN git clone -b master https://github.com/flutter/flutter.git ../sdk
-RUN /sdk/bin/flutter doctor
-RUN echo 'export PATH="/sdk/bin/:$PATH"' >> ~/.bashrc
+COPY . .
+RUN flutter pub get
+CMD ["flutter", "run", "-d", "web-server", "--web-port", "3030"]
+EXPOSE 3030
